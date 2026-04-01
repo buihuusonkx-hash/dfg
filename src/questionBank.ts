@@ -82,68 +82,67 @@ export const QUESTION_BANK: QuestionBank = {
 
     ds: [
       {
-        context: "Cho hàm số $f(x) = x^3 - 3x^2 - 9x + 5$ có đồ thị như hình vẽ bên. Xét các mệnh đề sau:",
-        image: "/images/graph_cubic_function.png",
+        context: "Một ô tô sau khi xuất phát, di chuyển với vận tốc $v(t) = 2{,}01t - 0{,}025t^2$ (m/s, $0 \\le t \\le 10$). Xét các mệnh đề sau:",
         statements: [
-          { text: "Hàm số đạt cực đại tại $x = -1$.", answer: "Đúng" },
-          { text: "Giá trị cực đại của hàm số là $f(-1) = 10$.", answer: "Đúng" },
-          { text: "Hàm số đạt cực tiểu tại $x = 3$ và giá trị cực tiểu là $-22$.", answer: "Đúng" },
-          { text: "Hàm số đồng biến trên khoảng $(−1; 3)$.", answer: "Sai" }
+          { text: "Gia tốc của xe là $a(t) = v'(t) = 2{,}01 - 0{,}05t$ (m/s²), đây là hàm bậc nhất giảm dần.", answer: "Đúng" },
+          { text: "Vận tốc đạt cực đại khi $v'(t) = 0$, tức $t = \\dfrac{2{,}01}{0{,}05} = 40{,}2$ giây, vượt ngoài khoảng $[0;10]$ nên $v$ đồng biến trên $[0;10]$.", answer: "Đúng" },
+          { text: "Quãng đường đi trong $3$ giây đầu là $s = \\int_0^3 (2{,}01t - 0{,}025t^2)\\,dt \\approx 8{,}3$ m.", answer: "Sai" },
+          { text: "Vận tốc lớn nhất trong khoảng $[0;10]$ đạt được tại $t = 10$ giây và bằng $v(10) = 17{,}85$ m/s.", answer: "Đúng" }
         ]
       },
       {
-        context: "Cho hàm số $y = \\dfrac{x+1}{x-2}$ (đồ thị $(C)$). Xét các mệnh đề sau:",
+        context: "Lợi nhuận của một công ty (triệu đồng/tháng) được mô hình hóa bởi hàm số $P(x) = -x^3 + 9x^2 - 15x + 7$, trong đó $x$ là số tháng kể từ đầu năm ($1 \\le x \\le 8$). Xét các mệnh đề sau:",
         statements: [
-          { text: "Hàm số nghịch biến trên từng khoảng xác định của nó.", answer: "Đúng" },
-          { text: "Đồ thị hàm số có đúng 2 đường tiệm cận.", answer: "Đúng" },
-          { text: "Đường tiệm cận ngang của đồ thị là $y = -1$.", answer: "Sai" },
-          { text: "Đồ thị $(C)$ đi qua điểm $M(0; -\\frac{1}{2})$.", answer: "Đúng" }
+          { text: "$P'(x) = -3x^2 + 18x - 15 = -3(x-1)(x-5)$.", answer: "Đúng" },
+          { text: "Lợi nhuận đạt cực đại tại tháng $x = 5$ với $P(5) = 32$ triệu đồng.", answer: "Đúng" },
+          { text: "Lợi nhuận đạt cực tiểu tại $x = 1$ với $P(1) = 0$ triệu đồng tức hòa vốn.", answer: "Đúng" },
+          { text: "Lợi nhuận luôn dương trong cả $8$ tháng.", answer: "Sai" }
         ]
       },
       {
-        context: "Cho hàm số $y = x^4 - 2x^2 + 3$. Xét các mệnh đề sau:",
-        statements: [
-          { text: "Hàm số có 3 điểm cực trị.", answer: "Đúng" },
-          { text: "Giá trị cực tiểu của hàm số là $2$.", answer: "Đúng" },
-          { text: "Hàm số đồng biến trên khoảng $(0; +\\infty)$.", answer: "Đúng" },
-          { text: "Đồ thị hàm số có trục đối xứng là trục $Ox$.", answer: "Sai" }
-        ]
-      },
-      {
-        context: "Một quả bóng được ném lên từ mặt đất với chiều cao $h(t) = -5t^2 + 20t$ (mét, $t$ tính bằng giây). Xét các mệnh đề sau:",
-        statements: [
-          { text: "Vận tốc của quả bóng là $v(t) = h'(t) = -10t + 20$ (m/s).", answer: "Đúng" },
-          { text: "Quả bóng đạt chiều cao lớn nhất tại thời điểm $t = 2$ giây.", answer: "Đúng" },
-          { text: "Chiều cao lớn nhất mà quả bóng đạt được là $20$ mét.", answer: "Đúng" },
-          { text: "Quả bóng rơi trở lại mặt đất sau $5$ giây.", answer: "Sai" }
-        ]
-      },
-      {
-        context: "Lượng thuốc trong máu bệnh nhân sau $t$ giờ uống thuốc được mô tả bởi hàm $C(t) = \\dfrac{4t}{t^2 + 1}$ (mg/lít). Xét các mệnh đề sau:",
+        context: "Nồng độ thuốc trong máu bệnh nhân (mg/lít) theo thời gian $t$ giờ sau khi tiêm là $C(t) = \\dfrac{4t}{t^2 + 1}$. Xét các mệnh đề sau:",
         statements: [
           { text: "Nồng độ thuốc tại $t = 0$ bằng $0$ mg/lít.", answer: "Đúng" },
           { text: "$C'(t) = \\dfrac{4(1 - t^2)}{(t^2 + 1)^2}$, nên nồng độ đạt cực đại tại $t = 1$ giờ.", answer: "Đúng" },
           { text: "Nồng độ thuốc cực đại là $C(1) = 2$ mg/lít.", answer: "Đúng" },
-          { text: "Sau $3$ giờ, nồng độ thuốc tăng so với thời điểm $t = 1$ giờ.", answer: "Sai" }
+          { text: "Sau $3$ giờ, nồng độ thuốc còn $C(3) = 1{,}2$ mg/lít, vẫn cao hơn $C(1)$.", answer: "Sai" }
+        ]
+      },
+      {
+        context: "Ông An thiết kế hộp đựng hàng hình hộp chữ nhật không nắp từ tấm bìa vuông cạnh $12$ cm, cắt $4$ góc vuông cạnh $x$ cm ($0 < x < 6$). Thể tích hộp $V(x) = x(12-2x)^2$. Xét các mệnh đề:",
+        statements: [
+          { text: "$V'(x) = (12-2x)^2 - 4x(12-2x) = (12-2x)(12-6x)$.", answer: "Đúng" },
+          { text: "$V'(x) = 0$ khi $x = 2$ hoặc $x = 6$ (loại $x = 6$). Điểm cực đại tại $x = 2$.", answer: "Đúng" },
+          { text: "Thể tích lớn nhất $V_{max} = 2 \\cdot (12-4)^2 = 128$ cm³.", answer: "Đúng" },
+          { text: "Nếu cắt góc cạnh $x = 3$ cm, thể tích hộp bằng $108$ cm³, nhỏ hơn thể tích tối ưu.", answer: "Đúng" }
+        ]
+      },
+      {
+        context: "Hàm số $y = \\dfrac{2x - 3}{x - 1}$ biểu diễn tỉ lệ hiệu suất (%) theo thời gian $x$ giờ làm việc $(x > 1)$. Xét các mệnh đề sau:",
+        statements: [
+          { text: "Đạo hàm $y' = \\dfrac{2(x-1) - (2x-3)}{(x-1)^2} = \\dfrac{1}{(x-1)^2} > 0$, tức hàm đồng biến trên $(1; +\\infty)$.", answer: "Đúng" },
+          { text: "Đồ thị có tiệm cận đứng $x = 1$ và tiệm cận ngang $y = 2$.", answer: "Đúng" },
+          { text: "Khi $x \\to +\\infty$, hiệu suất tiến đến $100\\%$.", answer: "Sai" },
+          { text: "Hàm số không có cực trị.", answer: "Đúng" }
         ]
       }
     ],
     tln: {
       "Thông hiểu": [
-        { text: "Tìm giá trị lớn nhất $M$ của hàm số $f(x) = -x^2 + 4x + 1$ trên đoạn $[0; 5]$. Tính $M$.", answer: "5", image: "/images/graph_parabola_max.png" },
+        { text: "Một ô tô chuyển động với vận tốc $v(t) = -t^2 + 6t + 16$ (km/h, $t \\ge 0$). Tìm vận tốc lớn nhất mà ô tô đạt được.", answer: "$25$ km/h tại $t = 3$ giờ" },
         { text: "Tìm số điểm cực trị của hàm số $y = x^4 - 8x^2 + 3$.", answer: "3" },
         { text: "Hàm số $y = \\dfrac{1}{3}x^3 - x^2 - 3x + 2$ đạt cực tiểu tại $x = a$. Tính $a$.", answer: "3" },
-        { text: "Một viên đạn được bắn lên cao với chiều cao $h(t) = -4{,}9t^2 + 49t$ mét. Hỏi viên đạn đạt chiều cao lớn nhất bằng bao nhiêu mét?", answer: "$122{,}5$ m" }
+        { text: "Lợi nhuận bán hàng theo số lượng $x$ (trăm sản phẩm): $P(x) = -x^2 + 10x - 16$. Tìm số lượng bán để lợi nhuận đạt tối đa.", answer: "$x = 5$ (tức 500 sản phẩm), $P_{max} = 9$ đơn vị" }
       ],
       "Vận dụng": [
-        { text: "Tìm tất cả giá trị nguyên của $m$ thuộc $[-5; 5]$ để hàm số $y = x^3 - 3x^2 + m$ có cực đại dương và cực tiểu âm.", answer: "3" },
-        { text: "Cho hàm số $y = x^3 - 3mx + 1$ ($m > 0$). Để hàm số có cực trị thì $m$ phải thỏa mãn điều kiện gì? Tính giá trị nhỏ nhất của $m$.", answer: "m > 0" },
-        { text: "Tổng tất cả các giá trị nguyên của tham số $m$ trên đoạn $[-3;3]$ để hàm số $y = x^3 - 3x + m$ có giá trị lớn nhất trên $[-2;2]$ là $6$ bằng bao nhiêu?", answer: "4" },
-        { text: "Chi phí sản xuất $x$ áo sơ mi là $C(x) = 0{,}01x^2 - 2x + 500$ (nghìn đồng). Tìm số áo để chi phí trung bình nhỏ nhất.", answer: "$x = \\sqrt{50000} \\approx 224$ áo" }
+        { text: "Chi phí sản xuất $x$ áo sơ mi là $C(x) = 0{,}01x^2 - 2x + 500$ (nghìn đồng). Tìm số áo để chi phí trung bình nhỏ nhất.", answer: "$x = 100\\sqrt{5} \\approx 224$ áo" },
+        { text: "Một cửa hàng bán vé xem phim. Khi giá vé $p$ (nghìn đồng), số lượng vé bán được là $q(p) = 600 - 2p$. Tìm giá vé để doanh thu tối đa.", answer: "$p = 150$ nghìn đồng, doanh thu $= 45000$ nghìn đồng" },
+        { text: "Nhiệt độ môi trường trong ngày biến thiên theo hàm $T(t) = -0{,}5t^2 + 6t + 20$ (°C, $0 \\le t \\le 12$, $t$ là số giờ từ 6h sáng). Tìm nhiệt độ cao nhất và thời điểm đó.", answer: "$T_{max} = 38$°C lúc $t = 6$ (tức 12h trưa)" },
+        { text: "Tìm tất cả giá trị nguyên của $m \\in [-5;5]$ để hàm số $y = x^3 - 3x^2 + m$ có cực đại dương và cực tiểu âm.", answer: "3 giá trị" }
       ],
       "Vận dụng cao": [
-        { text: "Có bao nhiêu giá trị nguyên của $m \\in [-10; 10]$ để phương trình $x^3 - 3x = m$ có 3 nghiệm phân biệt?", answer: "3" },
-        { text: "Giá trị lớn nhất của hàm số $f(x) = \\sin x + \\cos x$ trên $[0; \\pi]$ bằng bao nhiêu?", answer: "$\\sqrt{2}$" }
+        { text: "Công ty sản xuất $x$ tấn hàng/ngày, doanh thu $R(x) = -x^2 + 20x$, chi phí $C(x) = 2x + 10$ (triệu đồng). Tìm $x$ nguyên để lợi nhuận $P = R - C$ tối đa và tính lợi nhuận đó.", answer: "$x = 9$ tấn, lợi nhuận $= 53$ triệu đồng" },
+        { text: "Có bao nhiêu giá trị nguyên của $m \\in [-10; 10]$ để phương trình $x^3 - 3x = m$ có 3 nghiệm phân biệt?", answer: "3 giá trị ($m \\in \\{-1; 0; 1\\}$)" }
       ]
     }
   },
@@ -182,48 +181,48 @@ export const QUESTION_BANK: QuestionBank = {
 
     ds: [
       {
-        context: "Cho hàm số $f(x)$ liên tục trên $\\mathbb{R}$ và $\\int_0^3 f(x)dx = 5$, $\\int_0^1 f(x)dx = 2$. Xét các mệnh đề sau:",
+        context: "Một ô tô đang chạy $16$ m/s thì hãm phanh, vận tốc giảm theo $v(t) = 16 - 4t$ (m/s, $t \\ge 0$). Xét các mệnh đề sau:",
         statements: [
-          { text: "$\\int_1^3 f(x)dx = 3$.", answer: "Đúng" },
-          { text: "$\\int_3^0 f(x)dx = 5$.", answer: "Sai" },
-          { text: "$\\int_0^3 2f(x)dx = 10$.", answer: "Đúng" },
-          { text: "$\\int_0^3 [f(x) + 1]dx = 8$.", answer: "Đúng" }
+          { text: "Xe dừng hẳn tại $t = 4$ giây (khi $v(4) = 0$).", answer: "Đúng" },
+          { text: "Quãng đường hãm phanh là $S = \\int_0^4 (16-4t)\\,dt$.", answer: "Đúng" },
+          { text: "$S = [16t - 2t^2]_0^4 = 64 - 32 = 32$ mét.", answer: "Đúng" },
+          { text: "Nếu vận tốc ban đầu tăng gấp đôi ($32$ m/s), quãng đường hãm phanh cũng tăng gấp đôi.", answer: "Sai" }
         ]
       },
       {
-        context: "Cho tích phân $I = \\int_0^1 x e^{x^2} dx$. Xét các mệnh đề sau:",
+        context: "Nước chảy vào bể với tốc độ $Q(t) = 6t - t^2$ (lít/phút, $0 \\le t \\le 6$). Xét các mệnh đề sau:",
         statements: [
-          { text: "Đặt $t = x^2$ thì $dt = 2x\\,dx$.", answer: "Đúng" },
-          { text: "Sau khi đổi biến, cận tích phân là $[0; 1]$.", answer: "Đúng" },
-          { text: "$I = \\dfrac{1}{2}(e - 1)$.", answer: "Đúng" },
-          { text: "$I = e - 1$.", answer: "Sai" }
+          { text: "Tốc độ nước chảy lớn nhất tại $t = 3$ phút với $Q(3) = 9$ lít/phút.", answer: "Đúng" },
+          { text: "Tổng lượng nước trong $6$ phút: $S = \\int_0^6 (6t-t^2)\\,dt = \\left[3t^2 - \\dfrac{t^3}{3}\\right]_0^6 = 108 - 72 = 36$ lít.", answer: "Đúng" },
+          { text: "Lượng nước trong $3$ phút đầu: $\\int_0^3 (6t-t^2)\\,dt = 18$ lít, bằng đúng nửa tổng $6$ phút.", answer: "Đúng" },
+          { text: "Lượng nước trong $3$ phút cuối nhiều hơn $3$ phút đầu.", answer: "Sai" }
         ]
       },
       {
-        context: "Cho hình phẳng $(H)$ giới hạn bởi các đường $y = x^2$ và $y = x$. Xét các mệnh đề sau:",
+        context: "Thuốc kháng sinh được truyền tnh mạch với tốc độ $R(t) = 50e^{-0{,}1t}$ (mg/giờ, $t \\ge 0$). Xét các mệnh đề sau:",
         statements: [
-          { text: "Hai đường cong cắt nhau tại $(0, 0)$ và $(1, 1)$.", answer: "Đúng" },
-          { text: "Trên đoạn $[0;1]$, đường $y = x$ nằm trên đường $y = x^2$.", answer: "Đúng" },
-          { text: "Diện tích hình $(H)$ bằng $\\int_0^1 (x - x^2)dx$.", answer: "Đúng" },
-          { text: "Diện tích hình $(H)$ bằng $\\dfrac{1}{3}$.", answer: "Sai" }
+          { text: "Lượng thuốc đưa vào trong $[0; t]$ giờ là $A(t) = \\int_0^t 50e^{-0{,}1s}\\,ds = 500(1 - e^{-0{,}1t})$.", answer: "Đúng" },
+          { text: "Khi $t \\to +\\infty$, lượng thuốc tối đa có thể đưa vào cơ thể (theo mô hình) là $500$ mg.", answer: "Đúng" },
+          { text: "Lượng thuốc sau $10$ giờ $\\approx 500(1 - e^{-1}) \\approx 316$ mg.", answer: "Đúng" },
+          { text: "Tốc độ truyền thuốc không thay đổi theo thời gian.", answer: "Sai" }
         ]
       },
       {
-        context: "Nước chảy vào bể với tốc độ $v(t) = 6t - t^2$ (lít/phút, $0 \\le t \\le 6$). Xét các mệnh đề sau:",
+        context: "Công ty A bán hàng với doanh thu biên $R'(x) = 100 - 0{,}4x$ (đồng/sản phẩm), chi phí biên $C'(x) = 20 + 0{,}2x$ (đồng/sản phẩm). Xét các mệnh đề:",
         statements: [
-          { text: "Tốc độ nước chảy lớn nhất tại $t = 3$ phút ($v(3) = 9$ lít/phút).", answer: "Đúng" },
-          { text: "Tổng lượng nước chảy vào bể trong $6$ phút là $\\int_0^6 (6t - t^2)dt = 36$ lít.", answer: "Đúng" },
-          { text: "Sau $3$ phút, lượng nước đã chảy vào bể là $\\int_0^3 (6t - t^2)dt = 18$ lít.", answer: "Đúng" },
-          { text: "Lượng nước chảy vào trong $3$ phút cuối nhiều hơn $3$ phút đầu.", answer: "Sai" }
+          { text: "Lợi nhuận biên $P'(x) = R'(x) - C'(x) = 80 - 0{,}6x$.", answer: "Đúng" },
+          { text: "Lợi nhuận tối đa khi $P'(x) = 0$, tức $x = \\dfrac{80}{0{,}6} \\approx 133$ sản phẩm.", answer: "Đúng" },
+          { text: "Tổng lợi nhuận khi sản xuất $100$ sản phẩm: $P(100) = \\int_0^{100} (80-0{,}6x)\\,dx = 5000$ đồng.", answer: "Đúng" },
+          { text: "Sản xuất càng nhiều hàng, lợi nhuận căng tăng.", answer: "Sai" }
         ]
       },
       {
-        context: "Một ô tô tăng tốc từ trạng thái nghỉ với gia tốc $a(t) = 4 - t$ (m/s², $0 \\le t \\le 4$). Xét các mệnh đề:",
+        context: "Một ô tô tăng tốc từ trạng thái nghỉ với gia tốc $a(t) = 4 - 0{,}5t$ (m/s², $0 \\le t \\le 8$). Xét các mệnh đề:",
         statements: [
-          { text: "Vận tốc tại thời điểm $t$ là $v(t) = \\int_0^t (4-s)ds = 4t - \\dfrac{t^2}{2}$.", answer: "Đúng" },
-          { text: "Vận tốc lớn nhất đạt tại $t = 4$ giây.", answer: "Đúng" },
-          { text: "Quãng đường đi được trong $4$ giây đầu là $\\int_0^4 \\left(4t - \\dfrac{t^2}{2}\\right)dt = \\dfrac{64}{3}$ mét.", answer: "Đúng" },
-          { text: "Quãng đường đi trong $2$ giây đầu bằng đúng nửa quãng đường $4$ giây.", answer: "Sai" }
+          { text: "Vận tốc tại $t$: $v(t) = \\int_0^t a(s)\\,ds = 4t - 0{,}25t^2$.", answer: "Đúng" },
+          { text: "Vận tốc lớn nhất đạt tại $t = 8$ giây và bằng $v(8) = 16$ m/s.", answer: "Đúng" },
+          { text: "Quãng đường đi được trong $8$ giây: $S = \\int_0^8 (4t - 0{,}25t^2)\\,dt = \\dfrac{256}{3} \\approx 85{,}3$ mét.", answer: "Đúng" },
+          { text: "Quãng đường trong $4$ giây đầu bằng đúng nửa quãng đường $8$ giây.", answer: "Sai" }
         ]
       }
     ],
@@ -365,17 +364,35 @@ export const QUESTION_BANK: QuestionBank = {
           { text: "Để có $3200$ con, cần $4$ giờ.", answer: "Sai" },
           { text: "Thời gian để có $6400$ con là $\\log_2 64 = 6$ giờ.", answer: "Đúng" }
         ]
+      },
+      {
+        context: "Người mua căn hộ trị giá $2$ tỷ đồng, phải trả góp hằng năm với lãi suất không đổi $8\\%$/năm. Sau khi trả khoản đầu tiên, số tiền còn nợ biến thiên theo mô hình mũ $D(n) = 2{,}16 \\cdot (1{,}08)^n - C$ (tỷ đồng). Xét các mệnh đề:",
+        statements: [
+          { text: "Mô hình $D(n)$ dựa trên cấp số nhân với công bội $q = 1{,}08 > 1$.", answer: "Đúng" },
+          { text: "Nếu không trả thêm, khoản nợ tăng $8\\%$ mỗi năm.", answer: "Đúng" },
+          { text: "Sau $9$ năm (biết $\\log_{1{,}08} 2 \\approx 9$), nếu không trả, khoản nợ gốc tăng gấp khoảng $2$ lần.", answer: "Đúng" },
+          { text: "Lãi năm đầu tiên trên khoản nợ $2$ tỷ là $100$ triệu đồng.", answer: "Sai" }
+        ]
+      },
+      {
+        context: "Dịch cúm lây lan trong cộng đồng $P(t) = \\dfrac{5000}{1 + 999 \\cdot e^{-0{,}5t}}$ người nhiễm sau $t$ ngày. Xét các mệnh đề:",
+        statements: [
+          { text: "$P(0) = \\dfrac{5000}{1 + 999} = 5$ người nhiễm ban đầu.", answer: "Đúng" },
+          { text: "$\\lim_{t \\to +\\infty} P(t) = 5000$: dịch bão hòa $5000$ người.", answer: "Đúng" },
+          { text: "Mô hình logistic này tăng nhanh nhất khi $P = 2500$ người.", answer: "Đúng" },
+          { text: "Sau $20$ ngày, dịch đã lây lan với tốc độ nhanh như ngày đầu tiên.", answer: "Sai" }
+        ]
       }
     ],
     tln: {
       "Thông hiểu": [
-        { text: "Tính $A = \\log_2 4 + \\log_4 16 - \\log_8 64$.", answer: "3" },
+        { text: "Tính $A = \\log_2 4 + \\log_4 16 - \\log_8 64$.", answer: "$1$" },
         { text: "Giải phương trình $3^{x-1} = 27$. Tìm $x$.", answer: "4" },
-        { text: "Tính $\\log_{\\sqrt{3}} 9$.", answer: "4" }
+        { text: "Vi khuẩn nhân đôi mỗi $3$ giờ. Ban đầu có $200$ con. Sau $12$ giờ có bao nhiêu con?", answer: "$3200$ con" }
       ],
       "Vận dụng": [
-        { text: "Đầu tư 50 triệu đồng với lãi suất $8\\%$/năm (lãi kép). Sau bao nhiêu năm (nguyên) thì số tiền vượt 100 triệu? (Biết $\\log_{1.08} 2 \\approx 9$)", answer: "9 năm" },
-        { text: "Giải hệ phương trình $\\begin{cases} \\ln x + \\ln y = 3 \\\\ \\ln x - \\ln y = 1 \\end{cases}$. Tính $x + y$.", answer: "$e^2 + e$" }
+        { text: "Đầu tư 50 triệu đồng với lãi suất $8\\%$/năm (lãi kép). Sau bao nhiêu năm (nguyên) thì số tiền vượt 100 triệu? (Biết $\\log_{1{,}08} 2 \\approx 9$)", answer: "9 năm" },
+        { text: "Chất phóng xạ giảm theo $A(t) = A_0 \\cdot e^{-0{,}02t}$. Sau bao lâu còn $50\\%$ ban đầu? ($\\ln 2 \\approx 0{,}693$)", answer: "$\\approx 34{,}7$ năm" }
       ],
       "Vận dụng cao": [
         { text: "Tìm số nguyên dương $n$ nhỏ nhất để $(1{,}05)^n > 2$. (Biết $\\log 1{,}05 \\approx 0{,}02119$)", answer: "15" }
@@ -544,8 +561,8 @@ export const QUESTION_BANK: QuestionBank = {
       ],
       "Vận dụng": [
         { text: "Có 6 nam, 4 nữ. Chọn 3 người. Xác suất có ít nhất 1 nữ là:", options: ["$5/6$", "$1/6$", "$1/2$", "$2/3$"], answer: 'A' },
-        { text: "Hai xạ thủ bắn độc lập. $P(A)=0,8; P(B)=0,7$. XS ít nhất 1 người trúng là:", options: ["$0,94$", "$0,56$", "$0,15$", "$0,8$"], answer: 'A' },
-        { text: "Kho có 100 SP (5 lỗi). Lấy 3 SP. Xác suất có ít nhất 1 lỗi là:", options: ["$1 - \\dfrac{C_{95}^3}{C_{100}^3}$", "$\\dfrac{C_5^3}{C_{100}^3}$", "$0,05$", "$0,15$"], answer: 'A' }
+        { text: "Hai xạ thủ bắn độc lập. $P(A)=0{,}8; P(B)=0{,}7$. XS ít nhất 1 người trúng là:", options: ["$0{,}94$", "$0{,}56$", "$0{,}15$", "$0{,}8$"], answer: 'A' },
+        { text: "Kho có 100 SP (5 lỗi). Lấy 3 SP. Xác suất có ít nhất 1 lỗi là:", options: ["$1 - \\dfrac{C_{95}^3}{C_{100}^3}$", "$\\dfrac{C_5^3}{C_{100}^3}$", "$0{,}05$", "$0{,}15$"], answer: 'A' }
       ]
     },
     ds: [
@@ -579,7 +596,7 @@ export const QUESTION_BANK: QuestionBank = {
         { text: "Trong một lần bắn, xạ thủ trúng đích với xác suất $0{,}8$. Bắn 3 lần. Tính XS trúng ít nhất 2 lần.", answer: "$0{,}896$" }
       ],
       "Vận dụng cao": [
-        { text: "Biến ngẫu nhiên $X \\sim B(n, 0{,}5)$ có $E(X) = 6$. Tính $n$ và $D(X)$.", answer: "$n=12$, $D(X)=3$" }
+        { text: "Trong kỳ thi, một thí sinh có xác suất đỗ môn Toán là $0{,}8$ và môn Văn là $0{,}7$ (hai môn độc lập). Tính xác suất đỗ cả hai môn.", answer: "$0{,}56$" }
       ]
     }
   },
@@ -698,12 +715,12 @@ export const QUESTION_BANK: QuestionBank = {
         ]
       },
       {
-        context: "Một học sinh đoán ngẫu nhiên đáp án của 3 câu hỏi đúng/sai (mỗi câu xác suất đúng $\\dfrac{1}{2}$). Gọi $X$ là số câu trả lời đúng.",
+        context: "Một xưởng may kiểm tra chất lượng: lấy ngẫu nhiên $3$ sản phẩm từ lô hàng. Biết mỗi sản phẩm có xác suất đạt chuẩn là $0{,}9$, các sản phẩm kiểm tra độc lập nhau. Xét các mệnh đề sau:",
         statements: [
-          { text: "$X$ có phân phối nhị thức $B(3; 0{,}5)$.", answer: "Đúng" },
-          { text: "$P(X = 3) = \\dfrac{1}{8}$.", answer: "Đúng" },
-          { text: "Giá trị kỳ vọng $E(X) = 1{,}5$.", answer: "Đúng" },
-          { text: "Xác suất đúng ít nhất 2 câu là $P(X \\ge 2) = \\dfrac{3}{8}$.", answer: "Sai" }
+          { text: "Xác suất cả 3 sản phẩm đạt chuẩn là $0{,}9^3 = 0{,}729$.", answer: "Đúng" },
+          { text: "Xác suất tất cả đều không đạt chuẩn là $0{,}1^3 = 0{,}001$.", answer: "Đúng" },
+          { text: "Xác suất có ít nhất 1 sản phẩm không đạt là $1 - 0{,}729 = 0{,}271$.", answer: "Đúng" },
+          { text: "Xác suất có đúng 2 sản phẩm đạt chuẩn là $C_3^2 \\cdot 0{,}9^2 \\cdot 0{,}1 = 0{,}243$. Đây là xác suất cao nhất trong các trường hợp.", answer: "Sai" }
         ]
       }
     ],
