@@ -7,16 +7,16 @@ import { useState, useEffect, Fragment, type RefObject } from 'react';
 // Stub icons to avoid missing dependency on 'lucide-react'
 const PenSquare = (props: any) => <span {...props} />;
 const Download = (props: any) => <span {...props}>📥</span>;
-const Plus = (props: any) => <span {...props} />;
-const Trash2 = (props: any) => <span {...props} />;
+const Plus = (props: any) => <span {...props}>➕</span>;
+const Trash2 = (props: any) => <span {...props}>🗑️</span>;
 const ChevronRight = (props: any) => <span {...props}>▶️</span>;
 const Sparkles = (props: any) => <span {...props}>✨</span>;
 const RefreshCw = (props: any) => <span {...props}>🔄</span>;
-const X = (props: any) => <span {...props} />;
-const BookOpen = (props: any) => <span {...props} />;
-const Layout = (props: any) => <span {...props} />;
-const ListChecks = (props: any) => <span {...props} />;
-const FileJson = (props: any) => <span {...props} />;
+const X = (props: any) => <span {...props}>❌</span>;
+const BookOpen = (props: any) => <span {...props}>📖</span>;
+const Layout = (props: any) => <span {...props}>📋</span>;
+const ListChecks = (props: any) => <span {...props}>✅</span>;
+const FileJson = (props: any) => <span {...props}>📄</span>;
 // Use framer-motion for animations
 import { motion, AnimatePresence } from 'framer-motion';
 import { pickNLCQuestion, pickDSQuestion, pickTLNQuestion, resetUsedQuestions } from './questionBank';
@@ -241,10 +241,8 @@ export default function App() {
   };
 
   const removeChuong = (idx: number) => {
-    if (data.length > 1) {
-      const newData = data.filter((_, i) => i !== idx);
-      setData(newData);
-    }
+    const newData = data.filter((_, i) => i !== idx);
+    setData(newData);
   };
 
   return (
@@ -373,7 +371,7 @@ function TabNhapLieu({ data, setData, tuDongPhanBo, tuDongPhanBoMoi, addChuong, 
         <div key={cIdx} className="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm relative group">
           <button 
             onClick={() => removeChuong(cIdx)}
-            className="absolute top-6 right-6 p-2 text-slate-300 hover:text-rose-500 opacity-0 group-hover:opacity-100 transition-all"
+            className="absolute top-6 right-6 p-2 text-rose-500 hover:bg-rose-50 transition-all border border-rose-100 rounded-xl"
           >
             <Trash2 className="w-5 h-5" />
           </button>
@@ -395,16 +393,17 @@ function TabNhapLieu({ data, setData, tuDongPhanBo, tuDongPhanBoMoi, addChuong, 
           <div className="space-y-6">
             {chuong.noiDungs.map((nd: any, nIdx: number) => (
               <div key={nIdx} className="ml-6 p-6 border-l-4 border-indigo-500 bg-slate-50/50 rounded-r-2xl relative">
-                <button 
-                  onClick={() => removeNoiDung(cIdx, nIdx)}
-                  className="absolute top-4 right-4 flex items-center gap-1 px-3 py-1.5 bg-rose-50 text-rose-600 hover:bg-rose-100 hover:text-rose-700 rounded-lg text-[10px] font-bold uppercase transition-all"
-                >
-                  <Trash2 className="w-3.5 h-3.5" /> Xóa nội dung
-                </button>
-
-                <div className="flex gap-4 mb-6">
+                <div className="flex gap-4 mb-6 items-end">
                   <div className="flex-[3] relative">
-                    <label className="block text-[10px] font-black text-slate-400 uppercase mb-1 ml-1">Nội dung bài học</label>
+                    <div className="flex justify-between items-center mb-1 ml-1 text-slate-400">
+                      <label className="text-[10px] font-black uppercase">Nội dung bài học</label>
+                      <button 
+                        onClick={() => removeNoiDung(cIdx, nIdx)}
+                        className="flex items-center gap-1.5 px-2.5 py-1 bg-white border border-rose-200 text-rose-500 hover:bg-rose-50 hover:border-rose-300 rounded-lg text-[9px] font-black uppercase transition-all shadow-sm"
+                      >
+                        <Trash2 className="w-3 h-3" /> Xóa nội dung này
+                      </button>
+                    </div>
                     <input 
                       className="w-full p-3 rounded-xl border border-slate-200 font-semibold bg-white" 
                       placeholder="Tên bài học/nội dung (VD: Tính đơn điệu của hàm số)" 
