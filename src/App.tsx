@@ -336,11 +336,9 @@ function TabNhapLieu({ data, setData, tuDongPhanBo, tuDongPhanBoMoi, addChuong, 
   };
 
   const removeNoiDung = (cIdx: number, nIdx: number) => {
-    if (data[cIdx].noiDungs.length > 1) {
-      const newData = [...data];
-      newData[cIdx].noiDungs = newData[cIdx].noiDungs.filter((_: any, i: number) => i !== nIdx);
-      setData(newData);
-    }
+    const newData = [...data];
+    newData[cIdx].noiDungs = newData[cIdx].noiDungs.filter((_: any, i: number) => i !== nIdx);
+    setData(newData);
   };
 
   return (
@@ -399,9 +397,9 @@ function TabNhapLieu({ data, setData, tuDongPhanBo, tuDongPhanBoMoi, addChuong, 
               <div key={nIdx} className="ml-6 p-6 border-l-4 border-indigo-500 bg-slate-50/50 rounded-r-2xl relative">
                 <button 
                   onClick={() => removeNoiDung(cIdx, nIdx)}
-                  className="absolute top-4 right-4 p-1 text-slate-300 hover:text-rose-500"
+                  className="absolute top-4 right-4 flex items-center gap-1 px-3 py-1.5 bg-rose-50 text-rose-600 hover:bg-rose-100 hover:text-rose-700 rounded-lg text-[10px] font-bold uppercase transition-all"
                 >
-                  <X className="w-4 h-4" />
+                  <Trash2 className="w-3.5 h-3.5" /> Xóa nội dung
                 </button>
 
                 <div className="flex gap-4 mb-6">
