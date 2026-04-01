@@ -23,7 +23,7 @@ import { pickNLCQuestion, pickDSQuestion, pickTLNQuestion, resetUsedQuestions } 
 import { findYeuCau, getAllTopics } from './yeuCauCanDat';
 import { exportMatrixWord, exportSpecMatrixWord, exportExamWord } from './exportWord';
 import { useMathRender } from './MathText';
-import { MathFigure } from './MathFigure';
+
 // Simple clsx implementation to avoid external dependency
 function clsx(...classes: any[]) { return classes.filter(Boolean).join(' '); }
 import { twMerge } from 'tailwind-merge';
@@ -1021,8 +1021,7 @@ function ExamContent({ exam }: { exam: any[] }) {
                   [{q.bai} - {q.mucDo}]
                 </span>
               </p>
-              {/* Hình minh họa: ưu tiên image từ data, sau đó tự động nhận diện */}
-              <MathFigure text={q.noiDung} imageOverride={q.image} />
+
               <div className="grid grid-cols-2 gap-2 mt-2">
                 {opts.map((opt, idx) => (
                   <div key={opt} className={cn(
@@ -1050,8 +1049,7 @@ function ExamContent({ exam }: { exam: any[] }) {
           {p2.map((q, i) => (
             <div key={q.stt} className="mb-8 p-4 bg-slate-50/50 rounded-2xl border border-slate-100">
               <p className="text-sm font-bold mb-3">Câu {i + 1}. {q.context}</p>
-              {/* Hình minh họa cho câu DS: tự động nhận diện từ context */}
-              <MathFigure text={q.context} imageOverride={q.image} />
+
               <div className="space-y-2">
                 {q.statements?.map((s: any, i: number) => (
                   <div key={i} className="flex justify-between items-center text-sm bg-white p-2 rounded-lg border border-slate-100">
@@ -1081,8 +1079,7 @@ function ExamContent({ exam }: { exam: any[] }) {
                 <p className="text-sm"><strong>Câu {i + 1}.</strong> {q.noiDung}
                   <span className="text-[9px] text-slate-400 ml-2">({q.mucDo})</span>
                 </p>
-                {/* Hình minh họa cho câu TLN */}
-                <MathFigure text={q.noiDung} imageOverride={q.image} />
+
                 {showAnswers
                   ? <div className="mt-2 px-3 py-1 bg-green-50 border border-green-300 rounded-lg text-sm font-bold text-green-700 inline-block">Đáp án: {q.dapAn}</div>
                   : <div className="mt-2 h-8 w-48 border-b-2 border-dashed border-slate-300" />
