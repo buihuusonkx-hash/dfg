@@ -812,6 +812,7 @@ export const QUESTION_BANK: QuestionBank = {
         { text: "Chi phí sản xuất trung bình mỗi sản phẩm khi sản xuất $n$ sản phẩm là $f(n) = 50 + \\dfrac{2000}{n}$ (nghìn đồng). Khi $n$ rất lớn, chi phí trung bình tiến tới bao nhiêu?", answer: "$50$ nghìn đồng" }
       ],
       "Vận dụng cao": [
+        { topic: "Hàm số mũ - Hàm số Logarit", level: "Vận dụng cao", text: "Tiền gửi $100$ triệu, lãi $8\\%$/năm kép. Sau bao nhiêu năm vượt $200$ triệu?", options: ["10 năm", "8 năm", "12 năm", "9 năm"], answer: 'A' },
         { text: "Chứng minh phương trình $x^3 - 3x + 1 = 0$ có nghiệm trong khoảng $(1; 2)$. Xác nhận đúng hay sai: phương trình có ít nhất 1 nghiệm thuộc $(1;2)$.", answer: "Đúng" },
         { text: "Nhiệt độ lò nung nguội theo $T(t) = 25 + 475 \\cdot e^{-0{,}1t}$ (°C). Sau rất lâu, nhiệt độ lò tiến tới bao nhiêu? Sau bao lâu nhiệt độ giảm còn dưới $100$°C? ($\\ln 6{,}33 \\approx 1{,}845$)", answer: "$25$°C; $t \\approx 18{,}45$ phút" }
       ]
@@ -824,7 +825,7 @@ export const QUESTION_BANK: QuestionBank = {
   "Tích phân ứng dụng": {
     nlc: {
       "Nhận biết": [
-        { text: "Diện tích hình phẳng giới hạn bởi $y=f(x), y=g(x), x=a, x=b$ ($f \\ge g$) là:", options: ["$S = \\int_a^b [f(x)-g(x)]dx$", "$S = \\int_a^b [g(x)-f(x)]dx$", "$S = \\pi\\int_a^b [f(x)-g(x)]dx$","Không có đáp án"], answer: 'A' },
+        { text: "Diện tích hình phẳng giới hạn bởi $y=f(x), y=g(x), x=a, x=b$ ($f \\ge g$) là:", options: ["$S = \\int_a^b [f(x)-g(x)]dx$", "$S = \\int_a^b [g(x)-f(x)]dx$", "$S = \\pi\\int_a^b [f(x)-g(x)]dx$", "Không có đáp án"], answer: 'A' },
         { text: "Thể tích vật thể tròn xoay quanh $Ox$ từ $a$ đến $b$ của $y=f(x)$ là:", options: ["$V = \\pi\\int_a^b f^2(x)dx$", "$V = \\int_a^b f^2(x)dx$", "$V = 2\\pi\\int_a^b f(x)dx$", "$V = \\pi\\int_a^b f(x)dx$"], answer: 'A' },
         { text: "Quãng đường vật đi với vận tốc $v(t)$ từ $t_1$ đến $t_2$ là:", options: ["$S = \\int_{t_1}^{t_2} v(t)dt$", "$S = v(t_2)-v(t_1)$", "$S = \\int_{t_1}^{t_2} v'(t)dt$", "$S = v'(t_2)$"], answer: 'A' }
       ],
@@ -1323,7 +1324,7 @@ export const QUESTION_BANK: QuestionBank = {
         context: "Cho hình hộp $ABCD.A'B'C'D'$. Xét các mệnh đề sau:",
         statements: [
           { text: "$\\vec{AB} + \\vec{AD} + \\vec{AA'} = \\vec{AC'}$.", answer: "Đúng" },
-          { text: "$\\vec{AB} + \\vec{A'D'} = \\vec{AC}$ (nằm trong mặt phẳng đáy).", answer: "Sai" },
+          { text: "$\\vec{AB} + \\vec{A'D'} = \\vec{AC}$ (nằm trong mặt phẳng đáy).", answer: "Đúng" },
           { text: "$\\vec{AC'} = \\vec{AC} + \\vec{CC'}$ (quy tắc ba điểm).", answer: "Đúng" },
           { text: "Bốn đường chéo của hình hộp cắt nhau tại trung điểm mỗi đường.", answer: "Đúng" }
         ]
@@ -1468,14 +1469,42 @@ export const QUESTION_BANK: QuestionBank = {
  * Ưu tiên: exact match > chứa lẫn nhau > fallback ngẫu nhiên.
  */
 function findBestTopic(noiDung: string, fallbackTopics: string[]): TopicBank | undefined {
-  if (!noiDung) return QUESTION_BANK[fallbackTopics[Math.floor(Math.random() * fallbackTopics.length)]];
+  // 1. Chuẩn hóa cực mạnh
+  let input = noiDung.trim().toLowerCase();
 
-  // 1. Exact match
-  if (QUESTION_BANK[noiDung]) return QUESTION_BANK[noiDung];
+  // Loại bỏ các tiền tố phổ biến: CĐ1, Chương 2, Bài 3, CD 5...
+  input = input.replace(/^(c[đd]|chương|bài|b[.]|c[.])\s*\d+[.:\s-]*/i, '').trim();
 
-  // 2. Normalize input
-  const input = noiDung.toLowerCase().trim();
+  // Map các từ đồng nghĩa phổ biến để tăng khả năng trúng bank
+  const SYNONYMS: { [key: string]: string } = {
+    "biến thiên": "Tính đơn điệu của hàm số",
+    "cực trị": "Tính đơn điệu của hàm số",
+    "đạo hàm": "Hàm số",
+    "giá trị lớn nhất": "Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+    "giá trị nhỏ nhất": "Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+    "gtln": "Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+    "gtnn": "Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+    "tiệm cận": "Đường tiệm cận của đồ thị hàm số",
+    "tọa độ": "Toạ độ của vectơ trong không gian",
+    "oxyz": "Toạ độ của vectơ trong không gian",
+    "xác suất điều kiện": "Xác suất có điều kiện",
+    "bayes": "Xác suất có điều kiện",
+    "toàn phần": "Xác suất có điều kiện",
+    "mũ": "Hàm số mũ - Hàm số Logarit",
+    "logarit": "Hàm số mũ - Hàm số Logarit",
+    "tích phân": "Nguyên hàm - Tích phân"
+  };
+
+  for (const [syn, target] of Object.entries(SYNONYMS)) {
+    if (input.includes(syn)) return QUESTION_BANK[target];
+  }
+
   const bankKeys = Object.keys(QUESTION_BANK);
+
+  // 2. Ưu tiên fallbackTopics nếu trùng khớp hoàn toàn
+  for (const ft of fallbackTopics) {
+    if (ft.toLowerCase() === input) return QUESTION_BANK[ft];
+  }
 
   // 3. Tìm key chứa input hoặc input chứa key (fuzzy match)
   let bestKey = '';
@@ -1483,33 +1512,32 @@ function findBestTopic(noiDung: string, fallbackTopics: string[]): TopicBank | u
 
   for (const key of bankKeys) {
     const keyLower = key.toLowerCase();
+    if (keyLower === input) return QUESTION_BANK[key];
 
-    // Exact match lowercase
-    if (keyLower === input) { bestKey = key; bestScore = 1000; break; }
-
-    // Input chứa key (VD: "Tính đơn điệu của hàm số" chứa "hàm số")
     if (input.includes(keyLower)) {
-      const score = keyLower.length * 2; // Ưu tiên key dài hơn
+      const score = keyLower.length * 2;
       if (score > bestScore) { bestKey = key; bestScore = score; }
     }
 
-    // Key chứa input (VD: "Nguyên hàm - Tích phân" chứa "tích phân")
     if (keyLower.includes(input)) {
       const score = input.length;
       if (score > bestScore) { bestKey = key; bestScore = score; }
     }
 
-    // Tách từ và đếm số từ trùng
-    const inputWords = input.split(/[\s\-–,;.]+/).filter(w => w.length > 1);
-    const keyWords = keyLower.split(/[\s\-–,;.]+/).filter(w => w.length > 1);
+    // Tách từ và đếm số từ trùng (đã lọc các từ quá ngắn)
+    const inputWords = input.split(/[\s\-–,;.]+/).filter(w => w.length > 2);
+    const keyWords = keyLower.split(/[\s\-–,;.]+/).filter(w => w.length > 2);
     const commonWords = inputWords.filter(w => keyWords.some(kw => kw.includes(w) || w.includes(kw)));
     if (commonWords.length > 0) {
-      const score = commonWords.length * 3 + commonWords.join('').length;
+      const score = commonWords.length * 10 + commonWords.join('').length;
       if (score > bestScore) { bestKey = key; bestScore = score; }
     }
   }
 
   if (bestKey && bestScore > 0) return QUESTION_BANK[bestKey];
+
+  // 4. Fallback cuối cùng: lấy từ danh sách mặc định
+  return QUESTION_BANK[fallbackTopics[0]];
 
   // 4. Fallback: chọn ngẫu nhiên từ danh sách fallback
   const validFallbacks = fallbackTopics.filter(t => QUESTION_BANK[t]);
@@ -1576,42 +1604,47 @@ function isPracticalTLN(q: TLNQuestion): boolean {
  */
 export function pickNLCQuestion(noiDung: string, mucDo: string): NLCQuestion {
   const fallbackTopics = ["Hàm số", "Nguyên hàm - Tích phân", "Xác suất", "Hàm số mũ - Hàm số Logarit", "Phương trình - Bất phương trình mũ và logarit", "Giới hạn hàm số", "Xác suất có điều kiện", "Thống kê", "Tổ hợp - Xác suất"];
+
+  // 1. Tìm topic sát nhất
   const bankEntry = findBestTopic(noiDung, fallbackTopics);
   const levels = bankEntry?.nlc || {};
-  const rawPool = (levels[mucDo] || levels["Nhận biết"] || []).map(toNLC);
+  let rawPool = (levels[mucDo] || levels["Nhận biết"] || []).map(toNLC);
 
+  // 2. Nếu pool trống, thử lấy từ danh sách fallback (các chủ đề lớn tương tự)
   if (rawPool.length === 0) {
-    // Fallback: tìm tất cả NLC từ mọi topic ở mức tương ứng
-    const allNLC: NLCQuestion[] = [];
-    for (const topicKey of Object.keys(QUESTION_BANK)) {
-      const topicLevels = QUESTION_BANK[topicKey].nlc || {};
-      const topicPool = topicLevels[mucDo] || topicLevels["Nhận biết"] || [];
-      allNLC.push(...topicPool.map(toNLC));
+    for (const fbTopic of fallbackTopics) {
+      if (noiDung.toLowerCase().includes(fbTopic.toLowerCase()) || fbTopic.toLowerCase().includes(noiDung.toLowerCase())) {
+        const fbLevels = QUESTION_BANK[fbTopic]?.nlc || {};
+        const fbPool = (fbLevels[mucDo] || fbLevels["Nhận biết"] || []).map(toNLC);
+        if (fbPool.length > 0) {
+          rawPool = fbPool;
+          break;
+        }
+      }
     }
-    if (allNLC.length === 0) {
-      return { text: `Câu hỏi về ${noiDung} mức ${mucDo}.`, options: ['A. Đáp án A','B. Đáp án B','C. Đáp án C','D. Đáp án D'], answer: 'A' };
-    }
-    // Pick ngẫu nhiên từ all
-    return allNLC[Math.floor(Math.random() * allNLC.length)];
   }
 
-  // Tracking: chọn câu chưa dùng
+  // 3. Nếu vẫn trống, lấy bừa 1 câu từ topic đầu tiên của fallbackTopics để đảm bảo không bị lạc đề quá xa
+  if (rawPool.length === 0) {
+    const defaultTopic = fallbackTopics[0];
+    const defLevels = QUESTION_BANK[defaultTopic]?.nlc || {};
+    rawPool = (defLevels[mucDo] || defLevels["Nhận biết"] || []).map(toNLC);
+  }
+
+  // 4. Tracking: chọn câu chưa dùng
   const key = `${noiDung}__${mucDo}`;
   if (!usedNLCIndices.has(key)) usedNLCIndices.set(key, new Set());
   const used = usedNLCIndices.get(key)!;
-  
-  // Shuffle pool indices
+
   const indices = shuffle(Array.from({ length: rawPool.length }, (_, i) => i));
-  
-  // Tìm câu chưa dùng
+
   for (const idx of indices) {
     if (!used.has(idx)) {
       used.add(idx);
       return rawPool[idx];
     }
   }
-  
-  // Nếu hết câu chưa dùng, reset và chọn lại
+
   used.clear();
   const chosen = indices[0];
   used.add(chosen);
@@ -1622,18 +1655,23 @@ export function pickNLCQuestion(noiDung: string, mucDo: string): NLCQuestion {
  * Lấy câu hỏi Đúng/Sai — ƯU TIÊN CÂU THỰC TẾ, không trùng lặp
  */
 export function pickDSQuestion(noiDung: string): DSQuestion {
-  const fallbackTopics = ["Hàm số", "Nguyên hàm - Tích phân", "Xác suất", "Xác suất có điều kiện", "Tích phân ứng dụng", "Phương trình - Bất phương trình mũ và logarit", "Đường thẳng và mặt phẳng trong không gian", "Thống kê", "Tổ hợp - Xác suất", "Toán thực tế", "Hệ phương trình", "Khối đa diện", "Mặt cầu - Hình trụ - Hình nón", "Tính đơn điệu của hàm số", "Giới hạn hàm số", "Dãy số - Cấp số cộng - Cấp số nhân", "Bài toán thực tế tổng hợp", "Vectơ và các phép toán vectơ trong không gian", "Toạ độ của vectơ trong không gian"];
+  const fallbackTopics = ["Hàm số", "Nguyên hàm - Tích phân", "Xác suất", "Hình học không gian", "Xác suất có điều kiện"];
   const bankEntry = findBestTopic(noiDung, fallbackTopics);
   let pool = bankEntry?.ds || [];
 
-  // Nếu không tìm thấy topic, gom tất cả DS từ mọi topic
+  // 2. Nếu pool trống, thử lấy từ các chủ đề lớn của fallback
   if (pool.length === 0) {
-    const allDS: DSQuestion[] = [];
-    for (const topicKey of Object.keys(QUESTION_BANK)) {
-      const topicDS = QUESTION_BANK[topicKey].ds || [];
-      allDS.push(...topicDS);
+    for (const fbTopic of fallbackTopics) {
+      if (noiDung.toLowerCase().includes(fbTopic.toLowerCase()) || fbTopic.toLowerCase().includes(noiDung.toLowerCase())) {
+        const fbPool = QUESTION_BANK[fbTopic]?.ds || [];
+        if (fbPool.length > 0) { pool = fbPool; break; }
+      }
     }
-    pool = allDS;
+  }
+
+  // 3. Vẫn trống thì lấy mặc định
+  if (pool.length === 0) {
+    pool = QUESTION_BANK[fallbackTopics[0]]?.ds || [];
   }
 
   if (pool.length === 0) {
@@ -1667,10 +1705,10 @@ export function pickDSQuestion(noiDung: string): DSQuestion {
   const key = noiDung || '__default__';
   if (!usedDSIndices.has(key)) usedDSIndices.set(key, new Set());
   const used = usedDSIndices.get(key)!;
-  
+
   // Shuffle pool indices
   const indices = shuffle(Array.from({ length: targetPool.length }, (_, i) => i));
-  
+
   // Tìm câu chưa dùng
   for (const idx of indices) {
     if (!used.has(idx)) {
@@ -1678,7 +1716,7 @@ export function pickDSQuestion(noiDung: string): DSQuestion {
       return targetPool[idx];
     }
   }
-  
+
   // Nếu hết câu practical chưa dùng, reset và chọn lại từ practical
   used.clear();
   const chosen = indices[0];
@@ -1690,20 +1728,26 @@ export function pickDSQuestion(noiDung: string): DSQuestion {
  * Lấy câu hỏi TLN — ƯU TIÊN CÂU THỰC TẾ, không trùng lặp
  */
 export function pickTLNQuestion(noiDung: string, mucDo: string): TLNQuestion {
-  const fallbackTopics = ["Hàm số", "Nguyên hàm - Tích phân", "Xác suất", "Xác suất có điều kiện", "Tích phân ứng dụng", "Phương trình - Bất phương trình mũ và logarit", "Thống kê", "Tổ hợp - Xác suất", "Toán thực tế", "Hệ phương trình", "Khối đa diện", "Mặt cầu - Hình trụ - Hình nón", "Tính đơn điệu của hàm số", "Giới hạn hàm số", "Dãy số - Cấp số cộng - Cấp số nhân", "Bài toán thực tế tổng hợp", "Vectơ và các phép toán vectơ trong không gian", "Toạ độ của vectơ trong không gian"];
+  const fallbackTopics = ["Hàm số", "Nguyên hàm - Tích phân", "Xác suất", "Hình học không gian", "Xác suất có điều kiện"];
   const bankEntry = findBestTopic(noiDung, fallbackTopics);
   const levels = bankEntry?.tln || {};
-  let pool: TLNQuestion[] = levels[mucDo] || levels["Thông hiểu"] || [];
+  let pool = (levels[mucDo] || levels["Thông hiểu"] || []);
 
-  // Nếu không tìm thấy, gom tất cả TLN cùng mức từ mọi topic
+  // 2. Nếu pool trống, thử tìm chủ đề liên quan trong fallback
   if (pool.length === 0) {
-    const allTLN: TLNQuestion[] = [];
-    for (const topicKey of Object.keys(QUESTION_BANK)) {
-      const topicTLN = QUESTION_BANK[topicKey].tln || {};
-      const topicPool = topicTLN[mucDo] || topicTLN["Thông hiểu"] || [];
-      allTLN.push(...topicPool);
+    for (const fbTopic of fallbackTopics) {
+      if (noiDung.toLowerCase().includes(fbTopic.toLowerCase()) || fbTopic.toLowerCase().includes(noiDung.toLowerCase())) {
+        const fbLevels = QUESTION_BANK[fbTopic]?.tln || {};
+        const fbPool = (fbLevels[mucDo] || fbLevels["Thông hiểu"] || []);
+        if (fbPool.length > 0) { pool = fbPool; break; }
+      }
     }
-    pool = allTLN;
+  }
+
+  // 3. Vẫn trống thì lấy mặc định
+  if (pool.length === 0) {
+    const defLevels = QUESTION_BANK[fallbackTopics[0]]?.tln || {};
+    pool = (defLevels[mucDo] || defLevels["Thông hiểu"] || []);
   }
 
   if (pool.length === 0) {
@@ -1730,10 +1774,10 @@ export function pickTLNQuestion(noiDung: string, mucDo: string): TLNQuestion {
   const key = `${noiDung}__${mucDo}`;
   if (!usedTLNIndices.has(key)) usedTLNIndices.set(key, new Set());
   const used = usedTLNIndices.get(key)!;
-  
+
   // Shuffle pool indices
   const indices = shuffle(Array.from({ length: targetPool.length }, (_, i) => i));
-  
+
   // Tìm câu chưa dùng
   for (const idx of indices) {
     if (!used.has(idx)) {
@@ -1741,7 +1785,7 @@ export function pickTLNQuestion(noiDung: string, mucDo: string): TLNQuestion {
       return targetPool[idx];
     }
   }
-  
+
   // Nếu hết câu practical chưa dùng, reset và chọn lại
   used.clear();
   const chosen = indices[0];

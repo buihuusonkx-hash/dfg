@@ -42,7 +42,7 @@ export const NLC_BANK: NLCQuestion[] = [
   { topic: "Hàm số mũ - Hàm số Logarit", level: "Thông hiểu", text: "$\\log_3 27 - \\log_3 3 =$", options: ["2", "3", "1", "9"], answer: 'A' },
   { topic: "Hàm số mũ - Hàm số Logarit", level: "Thông hiểu", text: "Hàm số $y = 3^x$ đồng biến vì:", options: ["Cơ số $3 > 1$", "Cơ số $3 < 1$", "Hàm số chẵn", "Hàm số lẻ"], answer: 'A' },
   { topic: "Hàm số mũ - Hàm số Logarit", level: "Vận dụng", text: "Giải $4^x = 8^{x-1}$:", options: ["$x = 3$", "$x = 2$", "$x = 4$", "$x = 1$"], answer: 'A' },
-  { topic: "Hàm số mũ - Hàm số Logarit", level: "Vận dụng cao", text: "Tiền gửi $100$ triệu, lãi $8\\%$/năm kép. Sau bao nhiêu năm vượt $200$ triệu?", options: ["10 năm", "8 năm", "12 năm", "9 năm"], answer: 'D' },
+  { topic: "Hàm số mũ - Hàm số Logarit", level: "Vận dụng cao", text: "Tiền gửi $100$ triệu, lãi $8\\%$/năm kép. Sau bao nhiêu năm vượt $200$ triệu?", options: ["10 năm", "8 năm", "12 năm", "9 năm"], answer: 'A' },
 
   // ──────────────────────────────────────────────────────────
   // PHƯƠNG TRÌNH - BẤT PHƯƠNG TRÌNH MŨ VÀ LOGARIT
