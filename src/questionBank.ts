@@ -1344,7 +1344,7 @@ export const QUESTION_BANK: QuestionBank = {
         { text: "Cho hình hộp $ABCD.A'B'C'D'$ có $AB = 3$, $AD = 4$, $AA' = 5$. Tính $|\\vec{AC'}|$.", answer: "$5\\sqrt{2}$" }
       ],
       "Vận dụng": [
-        { text: "Ba lực $\\vec{F_1} = (2; 1; 3)$, $\\vec{F_2} = (-1; 3; 0)$, $\\vec{F_3} = (1; -2; -1)$ tác dụng lên vật. Tìm độ lớn hợp lực.", answer: "$\\sqrt{4+4+4} = 2\\sqrt{3}$ N" },
+        { text: "Ba lực $\\vec{F_1} = (2; 1; 3)$, $\\vec{F_2} = (-1; 3; 0)$, $\\vec{F_3} = (1; -2; -1)$ tác dụng lên vật. Tìm độ lớn hợp lực.", answer: "$2\\sqrt{3}$ N" },
         { text: "Máy bay bay từ $A$ đến $B$ theo vectơ $\\vec{AB} = (300; 400; 5)$ km. Tính khoảng cách bay.", answer: "$500$ km (xấp xỉ)" }
       ],
       "Vận dụng cao": [
@@ -1398,22 +1398,19 @@ export const QUESTION_BANK: QuestionBank = {
 
   // ──────────────────────────────────────────────────────────
   // ĐỀ THAM KHẢO BGD 2025 - CÁC BÀI TOÁN THỰC TẾ
-  // Nguồn: Đề 3 - Phát triển đề tham khảo BGD môn Toán 2025
   // ──────────────────────────────────────────────────────────
   "Bài toán thực tế tổng hợp": {
     nlc: {
       "Nhận biết": [
         { text: "Xe ô tô hãm phanh với vận tốc $v(t) = 16 - 4t$ (m/s). Xe dừng sau:", options: ["4 giây", "2 giây", "8 giây", "16 giây"], answer: 'A' },
-        { text: "Lớp học có 30 HS (17 nữ, 13 nam). XS chọn được 1 học sinh nữ là:", options: ["$17/30$", "$13/30$", "$1/2$", "$17/13$"], answer: 'A' },
-        { text: "Vệ tinh GPS ở tọa độ $A(3; 0; 0)$. Khoảng cách $AO$ là:", options: ["3", "9", "0", "$\\sqrt{3}$"], answer: 'A' }
+        { text: "Lớp học có 30 HS (17 nữ, 13 nam). XS chọn được 1 học sinh nữ là:", options: ["$17/30$", "$13/30$", "$1/2$", "$17/13$"], answer: 'A' }
       ],
       "Thông hiểu": [
         { text: "Xe hãm phanh $v(t) = 16 - 4t$. Quãng đường đi được từ lúc phanh đến khi dừng là:", options: ["32 m", "64 m", "16 m", "8 m"], answer: 'A' },
-        { text: "Lớp 30 HS (17 nữ, 13 nam); có 3 bạn tên Hiền (1 nữ, 2 nam). XS chọn được bạn Hiền biết là nữ là:", options: ["$1/17$", "$1/30$", "$1/3$", "$2/17$"], answer: 'A' },
-        { text: "Máy bay bay từ $A(1; 2; 3)$ đến $B(4; 5; 6)$. Vectơ chỉ phương quỹ đạo là:", options: ["$(3; 3; 3)$", "$(5; 7; 9)$", "$(1; 1; 1)$", "$(4; 5; 6)$"], answer: 'A' }
+        { text: "Lớp 30 HS (17 nữ, 13 nam); có 3 bạn tên Hiền (1 nữ, 2 nam). XS chọn được bạn Hiền biết là nữ là:", options: ["$1/17$", "$1/30$", "$1/3$", "$2/17$"], answer: 'A' }
       ],
       "Vận dụng": [
-        { text: "GPS: Vệ tinh $A_1(3;0;0), A_2(-3;0;0), A_3(0;4;0), A_4(0;0;5)$. Điểm $M$ cách đều $A_1, A_2$ nằm trên mặt phẳng nào?", options: ["$x = 0$", "$y = 0$", "$z = 0$", "$x + y + z = 0$"], answer: 'A' }
+        { text: "GPS: Vệ tinh $A_1(3;0;0), A_2(-3;0;0)$. Điểm $M$ cách đều $A_1, A_2$ nằm trên mặt phẳng nào?", options: ["$x = 0$", "$y = 0$", "$z = 0$", "$x + y + z = 0$"], answer: 'A' }
       ]
     },
     ds: [
